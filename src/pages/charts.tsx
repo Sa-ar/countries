@@ -6,7 +6,7 @@ import CountryTimezoneChart from "../components/charts/country-timezone-chart";
 const ChartsPage = () => {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Chart Page</h1>
+      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       <div className="flex flex-col md:flex-row gap-4">
         <div className="w-full md:w-1/2">
           <h2 className="text-xl font-bold mb-2">Regions Charts</h2>
