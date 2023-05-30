@@ -1,14 +1,6 @@
 "use client";
 import { DataGrid } from "@mui/x-data-grid";
 
-import {
-  Country,
-  useGetAllCountriesQuery,
-  useGetCountryByNameQuery,
-} from "../lib/api";
-import { useState } from "react";
-import SearchInput from "./search";
-
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 130 },
@@ -16,38 +8,32 @@ const columns = [
   // add other fields as needed
 ];
 
-const CountryTable = () => {
-  const { data: rawCountries = [], isFetching: isAllCountriesFetching } =
-    useGetAllCountriesQuery("");
-  const allCountries = Object.values(rawCountries);
-  const [searchTerm, setSearchTerm] = useState("");
-  const { data: searchedCountry, isFetching: isSearchedCountryFetching } =
-    useGetCountryByNameQuery(searchTerm);
+interface CountryTableProps {
+  countries?: {
+    id: string;
+    name: string;
+    capital: string;
+  }[];
+  isLoading: boolean;
+}
 
-  const isFetching = searchTerm
-    ? isSearchedCountryFetching
-    : isAllCountriesFetching;
-  const rows = searchTerm
-    ? [
-        {
-          id: searchedCountry?.alpha2Code,
-          name: searchedCountry?.name,
-          capital: searchedCountry?.capital,
-          // map other fields as needed
-        },
-      ]
-    : allCountries.map((country: Country) => ({
-        id: country.alpha2Code,
-        name: country.name,
-        capital: country.capital,
-        // map other fields as needed
-      }));
-
+const CountryTable: React.FC<CountryTableProps> = ({
+  countries = [],
+  isLoading,
+}) => {
   return (
-    <div className="mx-auto w-11/12 h-[90%]">
-      <SearchInput searchValue={searchTerm} setSearchValue={setSearchTerm} />
-      <DataGrid rows={rows} columns={columns} pagination loading={isFetching} />
-    </div>
+    <DataGrid
+      rows={countries}
+      columns={columns}
+      initialState={{
+        pagination: {
+          paginationModel: { pageSize: 12, page: 0 },
+        },
+      }}
+      pagination
+      pageSizeOptions={[12]}
+      loading={isLoading}
+    />
   );
 };
 

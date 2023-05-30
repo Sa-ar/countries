@@ -12,7 +12,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-center mt-12 w-full">
+    <div className="flex items-center justify-center w-full">
       <input
         type="text"
         placeholder="Search by country name"
