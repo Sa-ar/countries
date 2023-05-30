@@ -1,14 +1,13 @@
 "use client";
 import { DataGrid } from "@mui/x-data-grid";
 
-import { Country, useGetCountryByNameQuery } from "../lib/api";
+import {
+  Country,
+  useGetAllCountriesQuery,
+  useGetCountryByNameQuery,
+} from "../lib/api";
 import { useState } from "react";
 import SearchInput from "./search";
-
-interface CountryTableProps {
-  allCountries: Country[];
-  isAllCountriesFetching: boolean;
-}
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -17,10 +16,10 @@ const columns = [
   // add other fields as needed
 ];
 
-const CountryTable: React.FC<CountryTableProps> = ({
-  allCountries,
-  isAllCountriesFetching,
-}) => {
+const CountryTable = () => {
+  const { data: rawCountries = [], isFetching: isAllCountriesFetching } =
+    useGetAllCountriesQuery("");
+  const allCountries = Object.values(rawCountries);
   const [searchTerm, setSearchTerm] = useState("");
   const { data: searchedCountry, isFetching: isSearchedCountryFetching } =
     useGetCountryByNameQuery(searchTerm);
