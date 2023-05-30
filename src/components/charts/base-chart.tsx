@@ -25,11 +25,11 @@ const BaseChart: React.FC<BaseChartProps> = ({
   dataset,
 }) => {
   const barStyle = {
-    backgroundColor: "rgba(75,192,192,0.4)",
-    borderColor: "rgba(75,192,192,1)",
+    backgroundColor: "rgba(175,43,122,0.4)",
+    borderColor: "rgba(175,43,122,1)",
     borderWidth: 1,
-    hoverBackgroundColor: "rgba(75,192,192,0.7)",
-    hoverBorderColor: "rgba(75,192,192,1)",
+    hoverBackgroundColor: "rgba(175,43,122,0.7)",
+    hoverBorderColor: "rgba(175,43,122,1)",
   };
   const pieStyle = {
     backgroundColor: [
@@ -65,7 +65,7 @@ const BaseChart: React.FC<BaseChartProps> = ({
 
   return (
     <div>
-      <h2>{label}</h2>
+      <h2 className="text-[rgba(175,43,122,0.7)]">{label}</h2>
       {variant === CHART_TYPES.BAR ? <Bar data={data} /> : <Pie data={data} />}
     </div>
   );

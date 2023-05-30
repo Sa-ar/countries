@@ -46,7 +46,7 @@ const CountriesList = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Countries List</h1>
+      <h1 className="text-2xl font-bold mb-4 text-[#af2b7a]">Countries List</h1>
       <SearchInput searchValue={searchTerm} setSearchValue={setSearchTerm} />
       <CountriesTable countries={countries} isLoading={isFetching} />
     </div>

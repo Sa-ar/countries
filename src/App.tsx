@@ -5,6 +5,7 @@ import ChartsPage from "./pages/charts";
 import { useState } from "react";
 import TabPanel from "./components/tabs-panel";
 import CountriesList from "./pages/countries-list";
+import Header from "./components/header";
 
 function a11yProps(index: number) {
   return {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="container mx-auto">
+      <Header />
       <Box
         sx={{
           borderBottom: 1,
@@ -30,12 +32,15 @@ function App() {
           backgroundColor: "white",
           zIndex: 99,
           width: "100vw",
+          color: "#af2b7a",
         }}
       >
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          textColor="inherit"
+          indicatorColor="secondary"
         >
           <Tab label="Dashboard" {...a11yProps(0)} />
           <Tab label="Countries List" {...a11yProps(1)} />
