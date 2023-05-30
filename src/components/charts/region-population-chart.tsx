@@ -19,7 +19,7 @@ const RegionPopulationChart = () => {
   };
 
   return (
-    <BaseChart label="Country Population" labels={labels} dataset={dataset} />
+    <BaseChart label="Region Population" labels={labels} dataset={dataset} />
   );
 };
 
